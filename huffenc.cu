@@ -20,7 +20,7 @@ __global__ void computeFirstByteSym(int* lengthSum, int* firstByteSym, int n, in
     int curr = (lengthSum[thid - 1] / 8);
     int prev = (thid == 1) ? 0 : (lengthSum[thid - 2]/8);
     if (prev != curr) {
-        printf("sym: %d, curr: %d\n", thid, curr);
+        //printf("sym: %d, curr: %d\n", thid, curr);
         firstByteSym[curr] = thid;
     }
 }
@@ -54,7 +54,7 @@ int main(){
     int symbolsData[] = {0b1, 0b01, 0b001, 0b000};
     int sizesData[] = {1, 2, 3, 3};
     const int symN = 4;
-    const int dataN = 12;
+    const int dataN = 10000;
 
     thrust::device_vector<int> data;
     for (int i=0; i < dataN; i ++) data.push_back(i % symN);

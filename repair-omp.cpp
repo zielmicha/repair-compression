@@ -84,13 +84,14 @@ struct squeue {
     }
 
     void insert(unordered_map<T, int, pairhash> data) {
-        int max_count = 0;
+        int max_count = 100000;
         for (auto it : data) {
             Entry& e = entries[it.first];
             e.item = it.first;
             e.count = it.second;
             max_count = max(max_count, e.count);
         }
+        cerr << max_count << endl;
 
         levels.resize(max_count + 1);
         max_level = max_count;
